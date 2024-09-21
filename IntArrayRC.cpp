@@ -1,11 +1,11 @@
 #include "IntArrayRC.h"
 #include <cassert>
 
-inline IntArrayRC::IntArrayRC(int arr_size) : IntArray(arr_size) {
+IntArrayRC::IntArrayRC(int arr_size) : IntArray(arr_size) {
 
 }
 
-inline IntArrayRC::IntArrayRC(const int *arr, int arr_size) : IntArray(arr, arr_size) {
+IntArrayRC::IntArrayRC(const int *arr, int arr_size) : IntArray(arr, arr_size) {
 
 }
 

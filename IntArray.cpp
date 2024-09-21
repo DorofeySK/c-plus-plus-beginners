@@ -2,10 +2,10 @@
 
 void IntArray::init(const int *arr, int arr_size) {
     _size = arr_size;
-    arr = new int[_size];
+    this->arr = new int[_size];
     for (int index = 0; index < _size; index++) {
         if (!arr) {
-            this->arr[index] =0;
+            this->arr[index] = 0;
         } else {
             this->arr[index] = arr[index];
         }
