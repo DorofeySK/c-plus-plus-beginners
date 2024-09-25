@@ -1,10 +1,11 @@
 #include <iostream>
-#include "IntArray.h"
-#include "IntArrayRC.h"
+#include "Array.h"
+#include "ArrayRC.h"
 
 using namespace std;
 
-void swap(IntArray &int_arr, int first_index, int second_index) {
+template<class elemType>
+void swap(Array<elemType> &int_arr, int first_index, int second_index) {
     int tmp = int_arr[first_index];
     int_arr[first_index] = int_arr[second_index];
     int_arr[second_index] = tmp;
@@ -12,9 +13,9 @@ void swap(IntArray &int_arr, int first_index, int second_index) {
 
 int main() {
     cout << "start" << endl;
-    int start_arr[4] = {0, 1, 2, 3};
-    IntArray int_arr(start_arr, 4);
-    IntArrayRC int_arr_rc(start_arr, 4);
+    int start_arr[4] = {1, 2, 3, 4};
+    Array<int> int_arr(start_arr, 4);
+    ArrayRC<int> int_arr_rc(start_arr, 4);
     
     swap(int_arr, 0, 3);
     swap(int_arr_rc, 0, 3);
