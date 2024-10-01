@@ -17,5 +17,23 @@ int main() {
         std::cout << c << " ";
         std::cout << *c << std::endl;
     } while (*c++);
+
+    int ival = 1024;
+    int &ref = ival;
+    std::cout << &ival << " " << &ref << std::endl;
+    int *addr = &ival;
+    int *&ref_addr = addr;
+    std::cout << ref_addr << std::endl;
+    const int test = 10;
+    std::cout << &test << std::endl;
+
+    int arr[] = {1, 2, 3};
+    std::cout << arr << " " << arr + 1 << " " << arr + 2 << std::endl;
+
+    typedef double dd;
+    dd double_number = 10.5;
+    std::cout << double_number << std::endl;
+
+    volatile int unstable_without_optimization;
     system("pause");
 }
