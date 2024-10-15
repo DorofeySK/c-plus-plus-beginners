@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstddef>
 #include <bitset>
+#include "MyStack.h"
 
 int main() {
     int arr[] = { 1, 2, 3 };
@@ -45,6 +46,27 @@ int main() {
         }
     }
     std::cout << bitvec << std::endl;
+    std::cout << "---------------" << std::endl;
+
+    MyStack stack( 32 );
+    stack.display();
+    for ( int index = 1; index < 51; index++ ) {
+        if ( index % 2 == 0 ) {
+            stack.push( index );
+        }
+
+        if ( index % 5 == 0 ) {
+            stack.display();
+        }
+
+        if ( index % 10 == 0 ) {
+            int var;
+            stack.pop( var );
+            stack.pop( var );
+            stack.display();
+        }
+    }
+
     system( "pause" );
     return 0;
 }
