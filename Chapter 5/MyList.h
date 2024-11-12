@@ -8,8 +8,8 @@ private:
     list_item *_next;
 public:
     list_item( int value, list_item *item_to_link = 0 );
-    void next( list_item *ptr );
     list_item* next();
+    void next( list_item *ptr );
     int value();
     void value( int value );
 };
@@ -102,6 +102,58 @@ inline void my_list::insert_end( int value ) {
         _at_end = new list_item( value, _at_end );
     }
     decr();
+}
+
+inline int my_list::remove( int value ) {
+    list_item *front_item = _at_front;
+    int elem_cnt = 0;
+    while ( front_item && front_item->value() == value ) {
+        front_item = front_item->next();
+        remove_front();
+        elem_cnt++;
+    }
+    if ( !front_item ) {
+        return elem_cnt;
+    }
+    list_item *prev = front_item;
+    front_item = front_item->next();
+
+    while ( front_item ) {
+        if ( front_item->value() == value ) {
+            prev->next( front_item->next() );
+            delete front_item;
+            elem_cnt++;
+            decr();
+            front_item = prev->next();
+            if ( !front_item ) {
+                _at_end = prev;
+                return elem_cnt;
+            }
+        } else {
+            prev = front_item;
+            front_item = front_item->next();
+        }
+    }
+
+    return elem_cnt;
+}
+
+inline void my_list::remove_front()
+{
+    if ( _at_front ) {
+        list_item *ptr = _at_front;
+        _at_front = _at_front->next();
+        decr();
+        delete ptr;
+    }
+}
+
+inline void my_list::remove_all() {
+    while ( _at_front ) {
+        remove_front();
+    }
+    _size = 0;
+    _at_front = _at_end = 0;
 }
 
 inline int my_list::size() {
